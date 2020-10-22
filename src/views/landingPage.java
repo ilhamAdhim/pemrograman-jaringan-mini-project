@@ -16,6 +16,7 @@ public class landingPage extends javax.swing.JFrame {
      */
     public landingPage() {
         initComponents();
+        setTitle("PopularNames");
     }
 
     /**

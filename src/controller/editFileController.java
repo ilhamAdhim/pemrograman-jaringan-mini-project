@@ -35,8 +35,8 @@ public class editFileController {
                  if (contents != null && !contents.isEmpty()) {
                      writer = new BufferedOutputStream(new FileOutputStream(loadFile.getSelectedFile()));
                      writer.write(contents.getBytes(), 0, contents.length());
-                     JOptionPane.showMessageDialog(view, "File berhasil ditulis.", 
-                             "Informasi", JOptionPane.INFORMATION_MESSAGE);
+                     JOptionPane.showMessageDialog(view, "File is updated", 
+                             "Information", JOptionPane.INFORMATION_MESSAGE);
                  }else{
                      JOptionPane.showMessageDialog(view, "Text Editor is empty. Cannot Save the document.", 
                              "Warning", JOptionPane.WARNING_MESSAGE);
@@ -91,8 +91,8 @@ public class editFileController {
                     countChar++;
                     doc.insertString(doc.getLength(), ""+ascii, null);
                 }
-                status+="\nLines : "+countLine+"\nWords : "+countWord+"\nCharacters : "+countChar;
-                JOptionPane.showMessageDialog(view, "File berhasil dibaca."+status, 
+                status+="\nAmount of names: "+countLine+"\nCharacters : "+countChar;
+                JOptionPane.showMessageDialog(view, "File Loaded."+status, 
                         "Informasi", JOptionPane.INFORMATION_MESSAGE);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(editFileController.class.getName()).log(Level.SEVERE, null, ex);

@@ -26,6 +26,7 @@ public class editFile extends javax.swing.JFrame {
      */
     public editFile() {
         initComponents();
+        setTitle("PopularNames");
         controller = new editFileController(this);
     }
 

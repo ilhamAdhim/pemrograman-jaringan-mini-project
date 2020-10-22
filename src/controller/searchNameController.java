@@ -46,12 +46,14 @@ public class searchNameController {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(searchNameController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+    }
+    
+    public void getSuggestions(){
     }
     
     public void getNameDetail(String name){
         getNameList();
-        int rank = nameList.indexOf(name);
+        int rank = nameList.indexOf(name) + 1;
         
         // Now, check if this line contains our keyword. If it does, print the line
         if(nameList.contains(name)) { // check if line contain that word then prints the line

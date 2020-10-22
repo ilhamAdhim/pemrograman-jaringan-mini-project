@@ -6,6 +6,7 @@
 package views;
 
 import controller.searchNameController;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +22,7 @@ public class searchName extends javax.swing.JFrame {
     
     public searchName() {
         initComponents();
+        setTitle("PopularNames");
         controller = new searchNameController(this);
     }
 
@@ -114,7 +116,12 @@ public class searchName extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
         String name = jTextField1.getText();
-        controller.getNameDetail(name);
+        if(name.length() == 0){
+            JOptionPane.showMessageDialog(this, "Please input name", 
+                             "Warning", JOptionPane.WARNING_MESSAGE);
+        }else{
+            controller.getNameDetail(name);
+        }
     }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
