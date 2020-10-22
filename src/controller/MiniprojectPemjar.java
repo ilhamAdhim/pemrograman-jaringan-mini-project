@@ -18,5 +18,4 @@ public class MiniprojectPemjar {
     public static void main(String[] args) {
         new landingPage().setVisible(true);
     }
-    
 }
