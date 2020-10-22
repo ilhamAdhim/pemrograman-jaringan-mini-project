@@ -48,7 +48,7 @@ public class searchName extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Reading coba.txt ...");
+        jLabel1.setText("Reading name.txt ...");
 
         btnChangeFile.setText("Change File");
         btnChangeFile.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +81,7 @@ public class searchName extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)))))
+                                .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)))))
                 .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
@@ -95,7 +95,7 @@ public class searchName extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addComponent(btnChangeFile, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();

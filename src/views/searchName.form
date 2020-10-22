@@ -43,7 +43,7 @@
                           <Group type="102" attributes="0">
                               <Component id="jTextField1" min="-2" pref="284" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnSearch" pref="81" max="32767" attributes="0"/>
+                              <Component id="btnSearch" pref="91" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -64,7 +64,7 @@
               </Group>
               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               <Component id="btnChangeFile" min="-2" pref="34" max="-2" attributes="0"/>
-              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <EmptySpace pref="22" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -80,7 +80,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Reading coba.txt ..."/>
+        <Property name="text" type="java.lang.String" value="Reading name.txt ..."/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnChangeFile">

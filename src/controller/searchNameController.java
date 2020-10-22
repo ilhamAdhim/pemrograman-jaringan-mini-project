@@ -34,9 +34,7 @@ public class searchNameController {
     }
     
     List<String> nameList;
-    String DESTINATION_FILE = "C:/Users/Ilham A/Documents/Kuliah smt 5/Networking/week 7 Mini Project/nama.txt";
-    PushbackReader reader;
-    
+    String DESTINATION_FILE = "C:/Users/Ilham A/Documents/Kuliah smt 5/Networking/week 7 Mini Project/nama.txt";    
     public void getNameList(){
         File file = new File(DESTINATION_FILE);
         try {
