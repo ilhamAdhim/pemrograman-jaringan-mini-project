@@ -94,7 +94,7 @@ public class editFile extends javax.swing.JFrame {
                         .addGap(25, 25, 25))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
-                        .addGap(41, 41, 41)
+                        .addGap(60, 60, 60)
                         .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );

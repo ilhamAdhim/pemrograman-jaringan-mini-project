@@ -6,7 +6,11 @@
 package views;
 
 import controller.searchNameController;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -35,11 +39,12 @@ public class searchName extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollBar1 = new javax.swing.JScrollBar();
+        jFileChooser1 = new javax.swing.JFileChooser();
         btnSearch = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnChangeFile = new javax.swing.JButton();
+        btnEditFile = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        actionChangeFile = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,18 +55,25 @@ public class searchName extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Reading name.txt ...");
+        jLabel1.setText("Please choose a File");
 
-        btnChangeFile.setText("Change File");
-        btnChangeFile.addActionListener(new java.awt.event.ActionListener() {
+        btnEditFile.setText("Edit a File");
+        btnEditFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChangeFileActionPerformed(evt);
+                btnEditFileActionPerformed(evt);
             }
         });
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
+            }
+        });
+
+        actionChangeFile.setText("Change File");
+        actionChangeFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actionChangeFileActionPerformed(evt);
             }
         });
 
@@ -73,67 +85,72 @@ public class searchName extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnChangeFile))
+                        .addComponent(btnEditFile))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(actionChangeFile)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)))))
+                            .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(actionChangeFile))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
-                .addComponent(btnChangeFile, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEditFile, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnChangeFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeFileActionPerformed
+    private void btnEditFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditFileActionPerformed
         // TODO add your handling code here:
         new editFile().setVisible(true);
         this.dispose();//to close the current jframe
-    }//GEN-LAST:event_btnChangeFileActionPerformed
+    }//GEN-LAST:event_btnEditFileActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        
+        controller.getNameList();
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        String name = jTextField1.getText();
-        if(name.length() == 0){
-            JOptionPane.showMessageDialog(this, "Please input name", 
-                             "Warning", JOptionPane.WARNING_MESSAGE);
-        }else{
-            controller.getNameDetail(name);
+        if(controller.hasAnyFile()){
+            String name = jTextField1.getText();
+            if(name.length() == 0){
+                JOptionPane.showMessageDialog(this, "Please input name", 
+                                 "Warning", JOptionPane.WARNING_MESSAGE);
+            }else{
+                controller.getNameDetail(name);
+            }
         }
+        
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void actionChangeFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionChangeFileActionPerformed
+        controller.getNameList();
+    }//GEN-LAST:event_actionChangeFileActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
+       try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -161,11 +178,32 @@ public class searchName extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnChangeFile;
+    private javax.swing.JButton actionChangeFile;
+    private javax.swing.JButton btnEditFile;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
+    
+    public JFileChooser getLoadFile() {
+        return jFileChooser1;
+    }
+
+    public JButton getBtnSearch() {
+        return btnSearch;
+    }
+
+    public JButton getBtnChangeFile() {
+        return btnEditFile;
+    }
+
+    public JFileChooser getjFileChooser1() {
+        return jFileChooser1;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
 }

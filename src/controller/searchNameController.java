@@ -22,7 +22,10 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 
 public class searchNameController {
     searchName view;
@@ -34,35 +37,53 @@ public class searchNameController {
     }
     
     List<String> nameList;
-    String DESTINATION_FILE = "C:/Users/Ilham A/Documents/Kuliah smt 5/Networking/week 7 Mini Project/nama.txt";    
+    File DESTINATION_FILE;
+    
     public void getNameList(){
-        File file = new File(DESTINATION_FILE);
-        try {
-            Scanner reader = new Scanner(file);
-            nameList = new ArrayList<>();
-            while (reader.hasNext()) {
-                nameList.add(reader.nextLine());
+        JFileChooser loadFile = view.getLoadFile();
+        if(JFileChooser.OPEN_DIALOG == loadFile.showOpenDialog(view)){
+            try {
+                DESTINATION_FILE = loadFile.getSelectedFile();
+                Scanner sc = new Scanner(DESTINATION_FILE);
+                nameList = new ArrayList<>();
+                while (sc.hasNext()) {
+                    nameList.add(sc.nextLine());
+                }
+                getCurrentReadingFileName(DESTINATION_FILE);
+            }catch (FileNotFoundException ex) {
+                Logger.getLogger(editFileController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(editFileController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(searchNameController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public void getSuggestions(){
-    }
     
     public void getNameDetail(String name){
-        getNameList();
         int rank = nameList.indexOf(name) + 1;
-        
         // Now, check if this line contains our keyword. If it does, print the line
         if(nameList.contains(name)) { // check if line contain that word then prints the line
              JOptionPane.showMessageDialog(view, name + " is on rank " + rank, 
-                 "Informasi", JOptionPane.INFORMATION_MESSAGE);
+                 "Information", JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(view, name + " is not popular", 
-                 "Informasi", JOptionPane.INFORMATION_MESSAGE);
+                 "Information", JOptionPane.INFORMATION_MESSAGE);
         }
+    }
+    
+    public void getCurrentReadingFileName(File file){
+        String fileName = file.getName();
+        //Set file name information
+        view.getjLabel1().setText("Reading " + fileName);
+    }
+    
+    public boolean hasAnyFile(){
+        if(DESTINATION_FILE == null){
+            JOptionPane.showMessageDialog(view, "Select a file first", 
+                 "Information", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+        return true;
     }
     
 }
